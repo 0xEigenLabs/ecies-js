@@ -1,8 +1,9 @@
 
-import { Buffer } from 'buffer';
+// import { Buffer } from 'buffer';
 import * as crypto from 'crypto';
 import * as elliptic from "elliptic"
 
+const Buffer = require('buffer').Buffer
 const EC = elliptic.ec;
 const ec = new EC("p256");
 const empty_buffer = Buffer.allocUnsafe ? Buffer.allocUnsafe(0) : Buffer.from([]);
