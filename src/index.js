@@ -1,11 +1,13 @@
 
 // import { Buffer } from 'buffer';
-import * as crypto from 'crypto';
-import * as elliptic from "elliptic"
+//import * as crypto from 'crypto';
+//import * as elliptic from "elliptic"
+const crypto = require('crypto')
+const elliptic = require('elliptic')
 
 const Buffer = require('buffer').Buffer
 const EC = elliptic.ec;
-const ec = new EC("p256");
+const ec = new EC("secp256k1");
 const empty_buffer = Buffer.allocUnsafe ? Buffer.allocUnsafe(0) : Buffer.from([]);
 const AUTH_TAG_LEN = 16;
 const IV_LEN = 12;
@@ -177,5 +179,12 @@ const decrypt = function (keyPair, message, options) {
   return aes_dec(options.symmetricCypherName, encryptionKey, cipherText);
 }
 
-export { encrypt, decrypt, aes_dec, aes_enc };
-export { crypto, ec, Buffer }
+module.exports.encrypt = encrypt;
+module.exports.decrypt = decrypt;
+module.exports.aes_dec = aes_dec;
+module.exports.aes_enc = aes_enc;
+module.exports.crypto = crypto;
+module.exports.ec = ec;
+module.exports.Buffer = Buffer;
+//export { encrypt, decrypt, aes_dec, aes_enc };
+//export { crypto, ec, Buffer }
